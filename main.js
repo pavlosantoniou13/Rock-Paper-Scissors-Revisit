@@ -74,7 +74,6 @@ else {
 // if playerscore or computer score reach the number of 5 the resets
 function resetGame(){
   if (playerScore.innerText === '5' || computerScore.innerText === '5') {
-    resultDisplay.innerHTML = '0'
     playerScore.innerText = '0'
     computerScore.innerText = '0'
   }
