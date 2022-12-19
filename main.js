@@ -1,4 +1,3 @@
-const choices = ["rock", "paper", "scissors"]
 const computerChoiceDisplay = document.getElementById('computer-choice')
 const userChoiceDisplay = document.getElementById('user-choice')
 const resultDisplay = document.getElementById('result')
@@ -6,54 +5,77 @@ const possibleChoices = document.querySelectorAll('button')
 let userChoice
 let computerChoice
 let result
+const playerScore = document.getElementById('playerScore')
+const computerScore = document.getElementById('computerScore')
 
+
+//collects users choice and displays it, then it runs our game running generatecomputerchoice() and choosing the winner with get result().
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
   userChoice = e.target.id
-  
-  
-  
+  userChoiceDisplay.innerHTML = userChoice
+  generateComputerChoice()
+  getResult()
+  isWinner()
+  resetGame() 
 }))
-
-function game() {
-  //for (let i = 0; i < 5; i++) {
-    playRound(); // exei i mesa sta ()
-  //}
-    
+//generates a random number that equals to choice.
+function generateComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
+  
+  if (randomNumber === 1) {
+    computerChoice = 'rock'
+  }
+  if (randomNumber === 2) {
+    computerChoice = 'scissors'
+  }
+  if (randomNumber === 3) {
+    computerChoice = 'paper'
+  }
+  computerChoiceDisplay.innerHTML = computerChoice
 }
-
-function playRound(){
-const playerSelection = userChoice
-const computerSelection = getComputerChoice();
-const winner = checkWinner(playerSelection, computerSelection);
-console.log(winner)
-}
-
-/*function playerChoice() {
-    let input = prompt("Rock,Paper or Scissors?");
-    while(input == null){
-        input = prompt("Rock,Paper or Scissors?");
+//chooses the winner and displays it.
+function getResult() {
+    if (computerChoice === userChoice) {
+      result = 'its a draw!'
     }
-    input = input.toLowerCase();
-    return input
-}
-*/
-function checkWinner(choiceP, choiceC) {
-    if (choiceP === choiceC){
-      return "Tie"
-    } else if ((choiceP === 'rock' && choiceC =='scissors') || (choiceP === 'scissors' && choiceC =='paper') || (choiceP === 'paper' && choiceC =='rock') ){
-      return 'You win'
-    } else {
-      return 'You lose'
+    if (computerChoice === 'rock' && userChoice === "paper") {
+      result = 'you win!'
     }
-      
-    
+    if (computerChoice === 'rock' && userChoice === "scissors") {
+      result = 'you lost!'
+    }
+    if (computerChoice === 'paper' && userChoice === "scissors") {
+      result = 'you win!'
+    }
+    if (computerChoice === 'paper' && userChoice === "rock") {
+      result = 'you lost!'
+    }
+    if (computerChoice === 'scissors' && userChoice === "rock") {
+      result = 'you win!'
+    }
+    if (computerChoice === 'scissors' && userChoice === "paper") {
+      result = 'you lost!'
+    }
+    resultDisplay.innerHTML = result
 }
-
-function getComputerChoice() {
-    return choices[Math.floor(Math.random()*choices.length)] 
-    
+//increments the winners score
+function isWinner() {
+if (result === 'you win!') {
+  playerScore.innerText = parseInt(playerScore.innerText) + 1
 }
+else if (result === 'you lost!') {
+  computerScore.innerText = parseInt(computerScore.innerText) + 1
+}
+else {
+  return;
+} 
 
-
-
-
+}
+// if playerscore or computer score reach the number of 5 the resets
+function resetGame(){
+  if (playerScore.innerText === '5' || computerScore.innerText === '5') {
+    resultDisplay.innerHTML = '0'
+    playerScore.innerText = '0'
+    computerScore.innerText = '0'
+  }
+}
