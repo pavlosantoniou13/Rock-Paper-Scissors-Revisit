@@ -53,3 +53,7 @@ button:hover {
 #playerScore{
   margin-left: 38px;
 }
+
+#restartButton {
+  margin-top: 600px;
+}

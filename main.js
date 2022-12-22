@@ -10,6 +10,7 @@ const computerScore = document.getElementById('computerScore')
 const winner = document.getElementById('winner')
 
 //collects users choice and displays it, then it runs our game running generatecomputerchoice() and choosing the winner with get result().
+
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
   userChoice = e.target.id
   userChoiceDisplay.innerHTML = userChoice
@@ -19,6 +20,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
   announceWinner()
   resetGame() 
 }))
+
 //generates a random number that equals to choice.
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
@@ -95,6 +97,17 @@ function announceWinner(){
 
 // ena if statemet pou na leei ean to ena h to allo paei sta 5 tote na petagetai auto to koumpi
 
+let restartButton = document.getElementById("restartButton")
+
+restartButton.addEventListener("click", (e) =>{
+  resetGame();
+  computerChoiceDisplay.innerText = ""
+  resultDisplay.innerHTML = result = ""
+  userChoiceDisplay.innerText = ""
+  playerScore.innerText = '0'
+  computerScore.innerText = '0'
+}) 
+  
 
 
 // ena function pou na leei oti otan patiete auto to koumpi tha trexe to reset 
