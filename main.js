@@ -7,7 +7,7 @@ let computerChoice
 let result
 const playerScore = document.getElementById('playerScore')
 const computerScore = document.getElementById('computerScore')
-
+const winner = document.getElementById('winner')
 
 //collects users choice and displays it, then it runs our game running generatecomputerchoice() and choosing the winner with get result().
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
@@ -16,6 +16,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
   generateComputerChoice()
   getResult()
   isWinner()
+  announceWinner()
   resetGame() 
 }))
 //generates a random number that equals to choice.
@@ -56,7 +57,7 @@ function getResult() {
     if (computerChoice === 'scissors' && userChoice === "paper") {
       result = 'you lost!'
     }
-    resultDisplay.innerHTML = result
+   return result
 }
 //increments the winners score
 function isWinner() {
@@ -76,5 +77,24 @@ function resetGame(){
   if (playerScore.innerText === '5' || computerScore.innerText === '5') {
     playerScore.innerText = '0'
     computerScore.innerText = '0'
+    //resultDisplay.innerHTML = ""
+    computerChoiceDisplay.innerText = ""
+    userChoiceDisplay.innerText = ""
   }
 }
+
+function announceWinner(){
+  if(playerScore.innerText === '5'){
+    resultDisplay.innerHTML = result
+  }
+  else if(computerScore.innerText === '5'){
+    resultDisplay.innerHTML = result
+  }
+}
+
+
+// ena if statemet pou na leei ean to ena h to allo paei sta 5 tote na petagetai auto to koumpi
+
+
+
+// ena function pou na leei oti otan patiete auto to koumpi tha trexe to reset 

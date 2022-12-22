@@ -2,9 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div id="winner"> </div>
     <div>
       Player Score
       <div id="playerScore">0</div>
@@ -16,11 +18,13 @@
     <h2>Computer Choice: <span id="computer-choice"></span></h2>
     <h2>Your Choice: <span id="user-choice"></span></h2>
     <h2>Result: <span id="result"></span></h2>
-
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-
+    <div class="container">
+      <button id="rock" class="button">rock</button>
+      <button id="paper" class="button">paper</button>
+      <button id="scissors" class="button">scissors</button>
+    </div>  
+    
+    
 
     <script src="main.js" charset="utf-8"></script>
   </body>
