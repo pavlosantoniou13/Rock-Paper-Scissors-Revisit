@@ -76,7 +76,7 @@ else {
 }
 // if playerscore or computer score reach the number of 5 the resets
 function resetGame(){
-  if (playerScore.innerText === '6' || computerScore.innerText === '6') {
+  if (playerScore.innerText === '5' || computerScore.innerText === '5') {
     playerScore.innerText = '0'
     computerScore.innerText = '0'
     //resultDisplay.innerHTML = ""
@@ -86,10 +86,10 @@ function resetGame(){
 }
 
 function announceWinner(){
-  if(playerScore.innerText === '6'){
+  if(playerScore.innerText === '5'){
     resultDisplay.innerHTML = result
   }
-  else if(computerScore.innerText === '6'){
+  else if(computerScore.innerText === '5'){
     resultDisplay.innerHTML = result
   }
 }
